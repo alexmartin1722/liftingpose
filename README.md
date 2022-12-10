@@ -38,13 +38,13 @@ bash ViTPose/tools/dist_train.sh <Config PATH> <NUM GPUs> --cfg-options model.pr
 
 #### Testing ViTPose
 ```bash
-bash tools/dist_test.sh <Config PATH> <Checkpoint PATH> <NUM GPUs>
+bash ViTPose/tools/dist_test.sh <Config PATH> <Checkpoint PATH> <NUM GPUs>
 ```
 
 #### Demo ViTPose
-
-
-
+```bash
+python ViTPose/demo/top_down_img_demo.py <Config PATH> <Checkpoint PATH> --img-root <Image Root PATH> --json-file <JSON PATH> --out-img-root <Output PATH>
+```
 
 
 

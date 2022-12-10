@@ -1,0 +1,23 @@
+succesful run on coco: 
+
+python demo/top_down_img_demo.py configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/hrnet_w48_coco_256x192.py https://download.openmmlab.com/mmpose/top_down/hrnet/hrnet_w48_coco_256x192-b9e0b3ab_20200708.pth --img-root tests/data/coco/ --json-file tests/data/coco/test_coco.json --out-img-root C:\Users\amart50\Documents\CSC298Work\out-imgs\coco_body
+
+python demo/top_down_img_demo.py configs/body/2d_kpt_sview_rgb_img/deeppose/lift/res50_bench_256x192.py https://download.openmmlab.com/mmpose/top_down/hrnet/hrnet_w48_coco_256x192-b9e0b3ab_20200708.pth --img-root C:\Users\amart50\Documents\CSC298Work\LiftingData\Bench --json-file C:\Users\amart50\Documents\CSC298Work\LiftingData\annotations\bench_annotations.json --out-img-root C:\Users\amart50\Documents\CSC298Work\out-imgs\bench_body_test1
+
+
+C:\Users\amart50\Documents\CSC298Work\LiftingData\Bench\000000000001.jpeg
+'C:\\Users\\amart50\\Documents\\CSC298Work\\LiftingData\\Bench\\000000000001.jpg'
+
+
+
+C:\Users\amart50\Documents\CSC298Work\pretrained\vitpose-b-multi-coco.pth
+
+
+
+python demo/top_down_img_demo.py configs/body/2d_kpt_sview_rgb_img/deeppose/lift/res50_bench_256x192.py C:\Users\amart50\Documents\CSC298Work\pretrained\vitpose-b-multi-coco.pth --img-root C:\Users\amart50\Documents\CSC298Work\LiftingData\Bench --json-file C:\Users\amart50\Documents\CSC298Work\LiftingData\annotations\bench_annotations.json --out-img-root C:\Users\amart50\Documents\CSC298Work\out-imgs\bench_body_test1
+
+
+python demo/top_down_img_demo.py configs/body/2d_kpt_sview_rgb_img/deeppose/coco/res50_coco_256x192.py https://download.openmmlab.com/mmpose/top_down/hrnet/hrnet_w48_coco_256x192-b9e0b3ab_20200708.pth --img-root tests\data\coco  --json-file tests\data\coco\test_coco.json --out-img-root C:\Users\amart50\Documents\CSC298Work\out-imgs\coco_body
+
+
+python demo/top_down_img_demo.py configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/ViTPose_base_coco_256x192.py C:\Users\amart50\Documents\CSC298Work\pretrained\vitpose-b-multi-coco.pth --img-root tests\data\coco  --json-file tests\data\coco\test_coco.json --out-img-root C:\Users\amart50\Documents\CSC298Work\out-imgs\coco_body

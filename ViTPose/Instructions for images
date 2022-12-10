@@ -1,0 +1,23 @@
+coco-format json (test_coco.json as eg)
+category same dont change
+
+Main images:
+  - pad on the left with zeroes, total length of the string is 12. 
+  - Id is the non padded number
+  - Get the width and the height  (use cv)
+  
+
+Annotations: 
+ - segmentation: take list, create a list with 0 initalised as the same length as the previous list
+ 
+ area = 0
+ iscrowd = 0
+ 
+ - keypoint: every third element is 2, rest 0; keep the same length 
+ - check: length = 17 *3
+ 
+ image id: same as the main image
+ bbox- initalise with 0 
+ category_id = 1
+ id  = imageid
+ 

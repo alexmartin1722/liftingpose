@@ -1,5 +1,5 @@
 # How Good Is Your Pose? Pose Estimation for Weight Lifting Form Correction
-Paper: overleaf_veiwer_link
+Paper: [overleaf](https://www.overleaf.com/read/xtnkvccbvgwh)
 
 ## Environment Creation
 ```bash

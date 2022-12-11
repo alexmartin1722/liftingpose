@@ -9,6 +9,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class Net(nn.Module):
+    """
+    CNN model for lift classification with 3 output layers classifying 
+    the lift as Squat, Bench, or Deadlift
+    """
+
     def __init__(self):
         super().__init__()
         #define a 3 layer CNN

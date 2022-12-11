@@ -2,6 +2,7 @@
 Paper: overleaf_veiwer_link
 
 ## Environment Creation
+```bash
 conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 -c pytorch
 git clone https://github.com/open-mmlab/mmcv.git
 cd mmcv
@@ -13,7 +14,7 @@ cd liftingpose
 cd ViTPose
 pip install -v -e .
 pip install timm==0.4.9 einops
-
+```
 ## Usage
 ### Full Framework Demo
 

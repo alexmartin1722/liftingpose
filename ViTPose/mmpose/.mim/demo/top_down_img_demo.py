@@ -9,6 +9,8 @@ from mmpose.apis import (inference_top_down_pose_model, init_pose_model,
                          vis_pose_result)
 from mmpose.datasets import DatasetInfo
 
+import json
+
 
 def main():
     """Visualize the demo images.
@@ -77,6 +79,119 @@ def main():
     # e.g. use ('backbone', ) to return backbone feature
     output_layer_names = None
 
+    json_results = {}
+    json_results['info'] = {
+        "description": "Lifting data in COCO format",
+        "year": 2022,
+        "date_created": "2022/12/1"
+    }
+    json_results['categories'] = [
+        {
+            "supercategory": "person",
+            "id": 1,
+            "name": "person",
+            "keypoints": [
+                "nose",
+                "left_eye",
+                "right_eye",
+                "left_ear",
+                "right_ear",
+                "left_shoulder",
+                "right_shoulder",
+                "left_elbow",
+                "right_elbow",
+                "left_wrist",
+                "right_wrist",
+                "left_hip",
+                "right_hip",
+                "left_knee",
+                "right_knee",
+                "left_ankle",
+                "right_ankle"
+            ],
+            "skeleton": [
+                [
+                    16,
+                    14
+                ],
+                [
+                    14,
+                    12
+                ],
+                [
+                    17,
+                    15
+                ],
+                [
+                    15,
+                    13
+                ],
+                [
+                    12,
+                    13
+                ],
+                [
+                    6,
+                    12
+                ],
+                [
+                    7,
+                    13
+                ],
+                [
+                    6,
+                    7
+                ],
+                [
+                    6,
+                    8
+                ],
+                [
+                    7,
+                    9
+                ],
+                [
+                    8,
+                    10
+                ],
+                [
+                    9,
+                    11
+                ],
+                [
+                    2,
+                    3
+                ],
+                [
+                    1,
+                    2
+                ],
+                [
+                    1,
+                    3
+                ],
+                [
+                    2,
+                    4
+                ],
+                [
+                    3,
+                    5
+                ],
+                [
+                    4,
+                    6
+                ],
+                [
+                    5,
+                    7
+                ]
+            ]
+        }
+    ]
+    json_results['licenses'] = []
+    json_results['images'] = []
+    json_results['annotations'] = []
     # process each image
     for i in range(len(img_keys)):
         # get bounding box annotations
@@ -105,12 +220,38 @@ def main():
             dataset_info=dataset_info,
             return_heatmap=return_heatmap,
             outputs=output_layer_names)
+        
+        if image_id == 1 or image_id == 12 or image_id == 53 or image_id == 56 or image_id == 33 or image_id == 24:
+            image_dict = {}
+            image_dict['id'] = image_id
+            image_dict['file_name'] = str(image_id) +'.jpg'
+            image_dict['width'] = 0
+            image_dict['height'] = 0
+            json_results['images'].append(image_dict)
+            annotation_dict = {}
+            annotation_dict['id'] = image_id
+            annotation_dict['image_id'] = image_id
+            annotation_dict['category_id'] = 1
+            annotation_dict['keypoints'] = pose_results[0]['keypoints'].tolist()
+            annotation_dict['bbox'] = pose_results[0]['bbox'].tolist()
+            json_results['annotations'].append(annotation_dict)
+            # json_results[image_id] = pose_results[0]
+            print("ID", image_id)
+            print(pose_results)
+            print()
+        # if image_id == 10:
+        #     keypoints = pose_results[0]['keypoints'].tolist()
+        #     for i in keypoints:
+        #         print(i, ",")
+
+        
+
 
         if args.out_img_root == '':
             out_file = None
         else:
             os.makedirs(args.out_img_root, exist_ok=True)
-            out_file = os.path.join(args.out_img_root, f'vis_{i}.jpg')
+            out_file = os.path.join(args.out_img_root, f'vis_{image_id}.jpg')
 
         vis_pose_result(
             pose_model,
@@ -123,6 +264,9 @@ def main():
             thickness=args.thickness,
             show=args.show,
             out_file=out_file)
+    #write json_results to json file
+    with open('C:\\Users\\amart50\\Desktop\\gold_squat.json', 'w') as f:
+        json.dump(json_results, f, indent=4)
 
 
 if __name__ == '__main__':

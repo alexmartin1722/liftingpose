@@ -220,25 +220,43 @@ def main():
             dataset_info=dataset_info,
             return_heatmap=return_heatmap,
             outputs=output_layer_names)
-        
-        if image_id == 1 or image_id == 12 or image_id == 53 or image_id == 56 or image_id == 33 or image_id == 24:
-            image_dict = {}
-            image_dict['id'] = image_id
-            image_dict['file_name'] = str(image_id) +'.jpg'
-            image_dict['width'] = 0
-            image_dict['height'] = 0
-            json_results['images'].append(image_dict)
-            annotation_dict = {}
-            annotation_dict['id'] = image_id
-            annotation_dict['image_id'] = image_id
-            annotation_dict['category_id'] = 1
-            annotation_dict['keypoints'] = pose_results[0]['keypoints'].tolist()
-            annotation_dict['bbox'] = pose_results[0]['bbox'].tolist()
-            json_results['annotations'].append(annotation_dict)
-            # json_results[image_id] = pose_results[0]
-            print("ID", image_id)
-            print(pose_results)
-            print()
+        # print('pose', pose_results)
+        #store annotation into dictionary
+        image_dict = {}
+        image_dict['id'] = image_id
+        image_dict['out_img'] = 'vis_' + str(image_id) + '.jpg'
+        image_dict['file_name'] = str(image_id) + '.jpg'
+        json_results['images'].append(image_dict)
+        annotation_dict = {}
+        annotation_dict['id'] = image_id
+        annotation_dict['image_id'] = image_id
+        annotation_dict['category_id'] = 1
+        annotation_dict['keypoints'] = pose_results[0]['keypoints'].tolist()
+        #change every 3rd keypoint to .9
+        # for i in range(0, len(annotation_dict['keypoints']), 3):
+        #     print(i, annotation_dict['keypoints'][i+2])
+        #     annotation_dict['keypoints'][i+2] = .9
+        annotation_dict['bbox'] = pose_results[0]['bbox'].tolist()
+        json_results['annotations'].append(annotation_dict)
+
+        # if image_id == 1 or image_id == 12 or image_id == 53 or image_id == 56 or image_id == 33 or image_id == 24:
+        #     image_dict = {}
+        #     image_dict['id'] = image_id
+        #     image_dict['file_name'] = str(image_id) +'.jpg'
+        #     image_dict['width'] = 0
+        #     image_dict['height'] = 0
+        #     json_results['images'].append(image_dict)
+        #     annotation_dict = {}
+        #     annotation_dict['id'] = image_id
+        #     annotation_dict['image_id'] = image_id
+        #     annotation_dict['category_id'] = 1
+        #     annotation_dict['keypoints'] = pose_results[0]['keypoints'].tolist()
+        #     annotation_dict['bbox'] = pose_results[0]['bbox'].tolist()
+        #     json_results['annotations'].append(annotation_dict)
+        #     # json_results[image_id] = pose_results[0]
+        #     print("ID", image_id)
+        #     print(pose_results)
+        #     print()
         # if image_id == 10:
         #     keypoints = pose_results[0]['keypoints'].tolist()
         #     for i in keypoints:
@@ -265,7 +283,7 @@ def main():
             show=args.show,
             out_file=out_file)
     #write json_results to json file
-    with open('C:\\Users\\amart50\\Desktop\\gold_squat.json', 'w') as f:
+    with open('C:\\Users\\amart50\\Desktop\\annotations.json', 'w') as f:
         json.dump(json_results, f, indent=4)
 
 

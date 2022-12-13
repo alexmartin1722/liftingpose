@@ -8,20 +8,23 @@ class PoseScore(object):
 
     def __init__(self, lift, estimate_pose):
         self.lift = lift
-        self.gold_poses = self.get_gold(self.lift)
-        self.estimate_pose = estimate_pose
+        self.gold_poses = self.get_gold()
+        self.estimate_pose = self.get_estimate(estimate_pose)
         self._score = None
     
-    def get_gold(self, lift):
-        if lift == 'bench':
+    def get_estimate(self, estimate_pose):
+        est_json = json.load(open(estimate_pose))
+        return est_json
+    def get_gold(self):
+        if self.lift == 'bench':
             # liftingpose\gold_annotations\pose_estimations\bench\gold_bench.json
             gold_json = json.load(open('gold_annotations/pose_estimations/bench/gold_bench.json'))
             return gold_json
-        elif lift == 'squat':
+        elif self.lift == 'squat':
             # liftingpose\gold_annotations\pose_estimations\squat\gold_squat.json
             gold_json = json.load(open('gold_annotations/pose_estimations/squat/gold_squat.json'))
             return gold_json
-        elif lift == 'deadlift':
+        elif self.lift == 'deadlift':
             # liftingpose\gold_annotations\pose_estimations\deadlift\gold_deadlift.json
             gold_json = json.load(open('gold_annotations/pose_estimations/deadlift/gold_deadlift.json'))
             return gold_json
@@ -150,3 +153,9 @@ class PoseScore(object):
 
         score = self.get_score_from_distances(gold_distances=gold_distances, estimate_distances=estimate_distances)
         return score
+
+if __name__ == '__main__':
+    scorer = PoseScore(lift_type='bench', estimate_pose='C:\\Users\\amart50\\Desktop\\annotations.json')
+    bad_pairs = scorer(keypoint_pairs=[('left_shoulder', 'left_elbow'), ('right_shoulder', 'right_elbow'), 
+                    ('right_elbow','left_elbow'), ('right_wrist', 'left_wrist')])
+    print('Feedback is needed for:', bad_pairs)

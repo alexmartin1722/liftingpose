@@ -7,13 +7,14 @@ conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 -c pytorch
 git clone https://github.com/open-mmlab/mmcv.git
 cd mmcv
 git checkout v1.3.9
-MMCV_WITH_OPS=1 pip install -e .
+pip install -e .
 cd ..
 git clone https://github.com/alexmartin1722/liftingpose.git
 cd liftingpose
 cd ViTPose
 pip install -v -e .
 pip install timm==0.4.9 einops
+cd ..
 ```
 ## Usage
 ### Full Framework Demo

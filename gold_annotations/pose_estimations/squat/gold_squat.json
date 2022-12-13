@@ -113,38 +113,38 @@
         {
             "id": 1,
             "file_name": "1.jpg",
-            "width": 0,
-            "height": 0
+            "width": 1242,
+            "height": 1256
         },
         {
             "id": 12,
             "file_name": "12.jpg",
-            "width": 0,
-            "height": 0
+            "width": 1400,
+            "height": 788
         },
         {
             "id": 24,
             "file_name": "24.jpg",
-            "width": 0,
-            "height": 0
+            "width": 1240,
+            "height": 698
         },
         {
             "id": 33,
             "file_name": "33.jpg",
-            "width": 0,
-            "height": 0
+            "width": 2048,
+            "height": 1152
         },
         {
             "id": 53,
             "file_name": "53.jpg",
-            "width": 0,
-            "height": 0
+            "width": 1200,
+            "height": 556
         },
         {
             "id": 56,
             "file_name": "56.jpg",
-            "width": 0,
-            "height": 0
+            "width": 1000,
+            "height": 667
         }
     ],
     "annotations": [

@@ -113,20 +113,20 @@
         {
             "id": 10,
             "file_name": "10.jpg",
-            "width": 0,
-            "height": 0
+            "width": 1192,
+            "height": 1340
         },
         {
             "id": 3,
             "file_name": "3.jpg",
-            "width": 0,
-            "height": 0
+            "width": 612,
+            "height": 408
         },
         {
             "id": 9,
             "file_name": "9.jpg",
-            "width": 0,
-            "height": 0
+            "width": 1252,
+            "height": 1122
         }
     ],
     "annotations": [

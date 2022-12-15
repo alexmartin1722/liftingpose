@@ -1,4 +1,3 @@
-from .cnn import Net
-from .resent_cnn import ResNet, block
+from .pose_score import PoseScore
 
-__all__ = ['Net', 'ResNet', 'block']
+__all__ = ['PoseScore']

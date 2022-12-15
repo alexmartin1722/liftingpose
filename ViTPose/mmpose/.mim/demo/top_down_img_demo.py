@@ -220,7 +220,7 @@ def main():
             dataset_info=dataset_info,
             return_heatmap=return_heatmap,
             outputs=output_layer_names)
-        
+        # print('pose', pose_results)
         #store annotation into dictionary
         image_dict = {}
         image_dict['id'] = image_id
@@ -232,6 +232,10 @@ def main():
         annotation_dict['image_id'] = image_id
         annotation_dict['category_id'] = 1
         annotation_dict['keypoints'] = pose_results[0]['keypoints'].tolist()
+        #change every 3rd keypoint to .9
+        # for i in range(0, len(annotation_dict['keypoints']), 3):
+        #     print(i, annotation_dict['keypoints'][i+2])
+        #     annotation_dict['keypoints'][i+2] = .9
         annotation_dict['bbox'] = pose_results[0]['bbox'].tolist()
         json_results['annotations'].append(annotation_dict)
 
